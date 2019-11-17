@@ -1,0 +1,6 @@
+1, "Account Manager",1
+2,"Actor",1
+3,"Analist",1
+4,"Agente",1
+5,"Comercial",1
+6,"CEO",1

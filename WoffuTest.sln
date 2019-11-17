@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoffuTestApi", "WoffuTestApi\WoffuTestApi.csproj", "{5C96C07E-B437-40D4-A3AC-6E8B46943CB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoffuBL", "WoffuTestDL\WoffuBL.csproj", "{C8FC8E71-68F3-470A-9155-773D9B380D49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoffuTestApi.Tests", "WoffuTestApi.Tests\WoffuTestApi.Tests.csproj", "{13D4C3D7-F72A-48A1-BE77-90DF56AB9068}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoffuApi", "WoffuApi\WoffuApi.csproj", "{97688C0A-7E06-48F0-BC89-229C0F3A2BB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoffuTestDL", "WoffuTestDL\WoffuTestDL.csproj", "{C8FC8E71-68F3-470A-9155-773D9B380D49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoffuApi.Tests", "WoffuApi.Tests\WoffuApi.Tests.csproj", "{00E9F78D-692F-4979-BCB4-2C7449FEE984}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5C96C07E-B437-40D4-A3AC-6E8B46943CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C96C07E-B437-40D4-A3AC-6E8B46943CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C96C07E-B437-40D4-A3AC-6E8B46943CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C96C07E-B437-40D4-A3AC-6E8B46943CB0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13D4C3D7-F72A-48A1-BE77-90DF56AB9068}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13D4C3D7-F72A-48A1-BE77-90DF56AB9068}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13D4C3D7-F72A-48A1-BE77-90DF56AB9068}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13D4C3D7-F72A-48A1-BE77-90DF56AB9068}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C8FC8E71-68F3-470A-9155-773D9B380D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C8FC8E71-68F3-470A-9155-773D9B380D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8FC8E71-68F3-470A-9155-773D9B380D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8FC8E71-68F3-470A-9155-773D9B380D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97688C0A-7E06-48F0-BC89-229C0F3A2BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97688C0A-7E06-48F0-BC89-229C0F3A2BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97688C0A-7E06-48F0-BC89-229C0F3A2BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97688C0A-7E06-48F0-BC89-229C0F3A2BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E9F78D-692F-4979-BCB4-2C7449FEE984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E9F78D-692F-4979-BCB4-2C7449FEE984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E9F78D-692F-4979-BCB4-2C7449FEE984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E9F78D-692F-4979-BCB4-2C7449FEE984}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

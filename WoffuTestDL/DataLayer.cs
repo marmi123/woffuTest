@@ -6,19 +6,7 @@ using System.Threading.Tasks;
 
 namespace WoffuTestDL
 {
-    public class JobTitle
-    {
-        public int JobTitleId { get; set; }
-        public string Name { get; set; }
-        public int CompanyId { get; set; }
-        public JobTitle(int pId, string pName, int pCompanyId = 1)
-        {
-            JobTitleId = pId;
-            Name = pName;
-            CompanyId = pCompanyId;
-        }
-
-    }
+  
     public class DataLayer
     {
         public List<JobTitle> lJobTitles = 
@@ -31,7 +19,7 @@ namespace WoffuTestDL
                 new JobTitle(5,"Comecial"),
                 new JobTitle(6,"CEO")
             };
-        public JobTitle GetJobTitles( int id)
+        public JobTitle GetJobTitle( int id)
         {
             return lJobTitles.Where(x=>x.JobTitleId.Equals(id)).FirstOrDefault();
         }
@@ -39,10 +27,10 @@ namespace WoffuTestDL
         {
             return lJobTitles;
         }
-        public bool PostJobTitles(int id,string name)
+        public bool PostJobTitle(int id,string name)
         {
             bool retorn = false;
-            var jobTitle = GetJobTitles(id);
+            var jobTitle = GetJobTitle(id);
             if (jobTitle != null) {
                 jobTitle.Name = name;
                 retorn = true;
@@ -51,8 +39,13 @@ namespace WoffuTestDL
         }
         public List <JobTitle> PutJobTitles(int id, string name)
         {
-            var jobtitle=new JobTitle
+            var jobtitle = new JobTitle(id, name);
+            lJobTitles.Add(jobtitle);
+            return lJobTitles;
         }
-
+        public List<JobTitle> DeleteJobTitle(int id) {
+            lJobTitles.Remove(GetJobTitle(id));
+            return lJobTitles;
+        }
     }
 }

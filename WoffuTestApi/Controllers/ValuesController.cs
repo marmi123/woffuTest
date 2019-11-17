@@ -3,37 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Helpers;
 using System.Web.Http;
+using WoffuTestDL;
 
 namespace WoffuTestApi.Controllers
 {
-    public class ValuesController : ApiController
+    public class JobTitlesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return  Json(new WoffuTestDL.DataLayer().GetJobTitles());
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            return Json(new DataLayer().GetJobTitle(id));
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post(int id, [FromBody]string value)
         {
+            return Json(new DataLayer().PostJobTitle(id, value));
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(int id, [FromBody]string value)
         {
+            return Json(new DataLayer().PutJobTitles(id, value));
         }
 
         // DELETE api/values/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            return Json(new DataLayer().DeleteJobTitle(id));
         }
     }
 }

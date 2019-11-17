@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Web.Http;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WoffuTestApi;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WoffuTestApi.Controllers;
 
 namespace WoffuTestApi.Tests.Controllers
@@ -17,26 +10,26 @@ namespace WoffuTestApi.Tests.Controllers
         public void Get()
         {
             // Disponer
-            ValuesController controller = new ValuesController();
+            JobTitlesController controller = new JobTitlesController();
 
             // Actuar
-            IEnumerable<string> result = controller.Get();
+            var result = controller.Get();
 
             // Declarar
             Assert.IsNotNull(result);
-            Assert.AreEqual(2, result.Count());
-            Assert.AreEqual("value1", result.ElementAt(0));
-            Assert.AreEqual("value2", result.ElementAt(1));
+            //Assert.AreEqual(2, result.Count());
+            //Assert.AreEqual("value1", result.ElementAt(0));
+            //Assert.AreEqual("value2", result.ElementAt(1));
         }
 
         [TestMethod]
         public void GetById()
         {
             // Disponer
-            ValuesController controller = new ValuesController();
+            JobTitlesController controller = new JobTitlesController();
 
             // Actuar
-            string result = controller.Get(5);
+            var result = controller.Get(5);
 
             // Declarar
             Assert.AreEqual("value", result);
@@ -46,10 +39,10 @@ namespace WoffuTestApi.Tests.Controllers
         public void Post()
         {
             // Disponer
-            ValuesController controller = new ValuesController();
+            JobTitlesController controller = new JobTitlesController();
 
             // Actuar
-            controller.Post("value");
+            var retorn = controller.Post(1,"value");
 
             // Declarar
         }
@@ -58,10 +51,10 @@ namespace WoffuTestApi.Tests.Controllers
         public void Put()
         {
             // Disponer
-            ValuesController controller = new ValuesController();
+            JobTitlesController controller = new JobTitlesController();
 
             // Actuar
-            controller.Put(5, "value");
+            var retorn = controller.Put(7, "value 7");
 
             // Declarar
         }
@@ -70,10 +63,10 @@ namespace WoffuTestApi.Tests.Controllers
         public void Delete()
         {
             // Disponer
-            ValuesController controller = new ValuesController();
+            JobTitlesController controller = new JobTitlesController();
 
             // Actuar
-            controller.Delete(5);
+            var retorn = controller.Delete(5);
 
             // Declarar
         }

@@ -1,4 +1,4 @@
-﻿function get() {
+﻿function get(SeeResult=true) {
     $.ajax({
         type: "GET",
         contentType: "application/json",
@@ -8,7 +8,10 @@
             $('#tbJob').find("tr:gt(0)").remove();
             for (var i = 0; i < data.length; i++) {
                 var row = data[i];
-                $('#tbJob').append('<tr id="jobrow"><td>' + row.JobTitleId + '</td><td>' + row.Name + '</td><td>' + row.CompanyId + '</td></tr>');
+                $('#tbJob').append
+                    ('<tr id="jobrow"><td>' + row.JobTitleId + '</td><td>' + row.Name + '</td><td>' + row.CompanyId + '</td></tr>');
+                if (SeeResult===true)
+                    $('#JsonResult').val(JSON.stringify(data));
             }
         }
     });
@@ -18,16 +21,16 @@ function getId() {
         type: "GET",
         contentType: "application/json",
         dataType: 'json',
-        url: "/api/jobtitles?id=" + $('#GetId').val(),
+        url: "/api/jobtitles?id=" + $('#Id').val(),
         success: function (data) {
-            alert(JSON.stringify(data));
+            $('#JsonResult').val(JSON.stringify(data));            
+            $('#Id').val("");
         }
     });
 }
 function post() {
-
     var postData =
-        "=" + $('#PostValue').val();
+        "=" + $('#Value').val();
 
     $.ajax({
         type: "POST",
@@ -36,32 +39,35 @@ function post() {
         dataType: 'json',
         url: "/api/jobtitles",
         success: function (data) {
-            get();
+            $('#Value').val("");
+            get();            
         }
     });
 }
 function put() {
     var putData =
-        "=" + $('#PutValue').val();
-    
+        "=" + $('#Value').val();
     $.ajax({
         type: "PUT",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         data: putData,
         dataType: 'json',
-        url: "/api/jobtitles?id=" + $('#PutId').val(),
+        url: "/api/jobtitles?id=" + $('#Id').val(),
         success: function (data) {
+            $('#Id').val("");
+            $('#Value').val("");
             get();
         }
     });
 }
-function remove() {   
+function remove() { 
     $.ajax({
         type: "DELETE",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",        
         dataType: 'json',
-        url: "/api/jobtitles?id=" + $('#DeleteId').val(),
+        url: "/api/jobtitles?id=" + $('#Id').val(),
         success: function () {
+            $('#Id').val("");           
             get();
         }
     });

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WoffuApi.Controllers;
@@ -20,32 +21,31 @@ namespace WoffuApi.Tests
             System.Web.Http.IHttpActionResult result = controller.Get();
             JsonResult<List<JobTitle>> contentResult = result as JsonResult<List<JobTitle>>;
             // Declarar
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(contentResult.Content);
         }
 
         [TestMethod]
         public void GetById()
         {
-            // Disponer
             jobtitlesController controller = new jobtitlesController();
 
-            // Actuar
             var result = controller.Get(5);
+            JsonResult<JobTitle> contentResult = result as JsonResult<JobTitle>;
 
-            // Declarar
-            Assert.AreEqual("Comercial", result);
+            Assert.AreEqual("Comercial", contentResult.Content.Name);
         }
 
         [TestMethod]
         public void Post()
         {
-            // Disponer
             jobtitlesController controller = new jobtitlesController();
 
-            // Actuar
-            var retorn = controller.Post( "Backend Developper ");
-
-            // Declarar
+            var retorn = controller.Post("Backend Developper");
+            JsonResult<int> contentRetorn = retorn as JsonResult<int>;
+            var result = controller.Get(contentRetorn.Content);
+            JsonResult<JobTitle> contentResult = result as JsonResult<JobTitle>;
+            Assert.AreEqual("Backend Developper", contentResult.Content.Name);
+            
         }
 
         [TestMethod]
@@ -56,24 +56,32 @@ namespace WoffuApi.Tests
 
             // Actuar
             var retorn = controller.Put(5, "value 7");
-            JsonResult<List<JobTitle>> contentResult = retorn as JsonResult<List<JobTitle>>;
-            // Declarar
-            Assert.IsNotNull(retorn);
-
-            Assert.AreEqual(contentResult.Content.Count, 6);
-            // Declarar
+            var result = controller.Get(5);
+            JsonResult<JobTitle> contentResult = result as JsonResult<JobTitle>;
+            Assert.AreEqual("value 7", contentResult.Content.Name);
+            retorn = controller.Put(5, "value 9");
+            result = controller.Get(5);
+            contentResult = result as JsonResult<JobTitle>;
+            Assert.AreEqual("value 9", contentResult.Content.Name);
         }
 
         [TestMethod]
         public void Delete()
         {
-            // Disponer
             jobtitlesController controller = new jobtitlesController();
-
-            // Actuar
-            var retorn = controller.Delete(5);
-
-            // Declarar
+            System.Web.Http.IHttpActionResult listJobTitles = controller.Get();
+            JsonResult<List<JobTitle>> contentList = listJobTitles as JsonResult<List<JobTitle>>;
+            var firstElement = contentList.Content.OrderBy(x => x.JobTitleId).FirstOrDefault();
+            //If firsOrDefault is null there is not elements in the BBDD The test fail.
+            Assert.IsNotNull(firstElement);
+            var id = firstElement.JobTitleId;
+            var result = controller.Get(id);
+            JsonResult<JobTitle> contentResult = result as JsonResult<JobTitle>;
+            Assert.IsNotNull(contentResult.Content);
+            var retorn = controller.Delete(id);
+            result = controller.Get(id);
+            contentResult = result as JsonResult<JobTitle>;
+            Assert.IsNull(contentResult.Content);
         }
     }
 }

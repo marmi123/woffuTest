@@ -7,47 +7,51 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <script src="woffu.js"></script>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Woffu test</title>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;            
+            padding: 10px;
+        }
+    </style>
 </head>
-<body>
-    <div class="table-responsive">
-        <table class="table" id="tbJob">
-            <thead>
-                <tr>
-                    <th scope="col">IdJobTitle</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Company</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-            <button type="button" class="btn btn-primary" id="btGet">Get</button>
+<body style="align-content:center">
+    <div class="center" style="max-width:800px; padding:10px;width:90%">
+
+
+        <div class="table-responsive">
+            <table class="table" id="tbJob">
+                <thead>
+                    <tr>
+                        <th scope="col">IdJobTitle</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Company</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
-        <input id="GetId" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-    </div>
-    
         <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary" id="btPost">Post</button>
-            </div>
-            <input id="PostValue" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            &nbsp;Id&nbsp;<input id="Id" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            &nbsp;Value&nbsp;<input id="Value" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         </div>
-    
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
+        <div class="input-group input-group-sm mb-3">
+
+        </div>
+
+        <div class="center">
+            <button type="button" class="btn btn-primary" id="btGet">Get</button>
+            <button type="button" class="btn btn-secondary" id="btPost">Post</button>
             <button type="button" class="btn btn-success" id="btPut">Put</button>
-        </div>
-        <input id="PutId" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-        <input id="PutValue" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-    </div>
-    <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
             <button type="button" class="btn btn-danger" id="btDelete">Delete</button>
         </div>
-        <input id="DeleteId" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <div class="form-group purple-border">
+            <label for="JsonResult">Json result</label>
+            <textarea class="form-control" id="JsonResult" rows="3"></textarea>
+        </div>
+
+
     </div>
     <script>
         $(document).ready(function () {

@@ -22,8 +22,18 @@ namespace WoffuBL
         private List<JobTitle> ReadValuesOfFile()
         {
             var retorn = new List<JobTitle>();
-            
-            var readValues= File.ReadAllLines(path+"/bin/WoffuValues.txt");
+            string[] readValues;
+            //This code is only for the unit test
+            //Simulate a BBDD with a text file
+            //The folders structure depends of the project type
+            if (Directory.Exists(path + "/bin/"))
+            {
+                readValues = File.ReadAllLines(path + "/bin/WoffuValues.txt");
+            }
+            else
+            {
+                readValues = File.ReadAllLines(path + "/WoffuValues.txt");
+            }
             foreach (var jobtitle in readValues)
             {
                 var ArrayRecord= jobtitle.Split(',');
@@ -41,7 +51,13 @@ namespace WoffuBL
             {
                 valuesOfList.Add(linia.JobTitleId.ToString() + "," + linia.Name + "," + linia.CompanyId.ToString());
             }
-            File.WriteAllLines(path+"/bin/WoffuValues.txt",valuesOfList);
+            //This code is only for the unit test
+            //Simulate a BBDD with a text file
+            //The folders structure depends of the project type
+            if (Directory.Exists(path + "/bin/"))
+                File.WriteAllLines(path + "/bin/WoffuValues.txt", valuesOfList);
+            else
+                File.WriteAllLines(path + "/WoffuValues.txt", valuesOfList);
             return true;
         }
         public JobTitle GetJobTitle( int id)
@@ -63,12 +79,13 @@ namespace WoffuBL
             WriteValuesToFile();
             return lJobTitles;
         }
-        public List <JobTitle> PostJobTitle( string name)
+        public int PostJobTitle( string name)
         {
-            var jobtitle = new JobTitle(GetId(), name);
+            var id = GetId();
+            var jobtitle = new JobTitle(id, name);
             lJobTitles.Add(jobtitle);
             WriteValuesToFile();
-            return lJobTitles;
+            return id;
         }
 
         private int GetId()

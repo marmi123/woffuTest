@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WoffuApi.Filters;
 using WoffuBL;
 
 namespace WoffuApi.Controllers
 {
+    [BasicAuthentication]
+    
     public class jobtitlesController : ApiController
     {
-        BussinessLayer BL = new BussinessLayer(System.Web.HttpContext.Current.Server.MapPath("~"));
-            // GET api/values
-            public IHttpActionResult Get()
+        BussinessLayer BL = new BussinessLayer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory));
+            //System.Web.HttpContext.Current.Server.MapPath("~"));
+        // GET api/values
+
+        public IHttpActionResult Get()
             {
                 return Json( BL.GetJobTitles());
             }

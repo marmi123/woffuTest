@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WoffuApi.Filters;
+
 
 namespace WoffuApi
 {
@@ -19,7 +21,7 @@ namespace WoffuApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            
+            config.Filters.Add(new BasicAuthenticationAttribute());
         }
     }
 }

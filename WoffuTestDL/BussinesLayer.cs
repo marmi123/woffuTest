@@ -11,8 +11,10 @@ namespace WoffuBL
     public class BussinessLayer
     {
         public List<JobTitle> lJobTitles;
-        public  BussinessLayer()
+        string path;
+        public  BussinessLayer(string path)
         {
+            this.path = path;
             lJobTitles = ReadValuesOfFile();
         }
         
@@ -20,7 +22,8 @@ namespace WoffuBL
         private List<JobTitle> ReadValuesOfFile()
         {
             var retorn = new List<JobTitle>();
-            var readValues= File.ReadAllLines("WoffuValues.txt");
+            
+            var readValues= File.ReadAllLines(path+"/bin/WoffuValues.txt");
             foreach (var jobtitle in readValues)
             {
                 var ArrayRecord= jobtitle.Split(',');
@@ -29,7 +32,7 @@ namespace WoffuBL
                     retorn.Add(new JobTitle(Convert.ToInt16(ArrayRecord[0]), ArrayRecord[1], Convert.ToInt16(ArrayRecord[2])));
                 }
             }
-            return null;            
+            return retorn;            
         }
         private bool WriteValuesToFile()
         {
@@ -38,7 +41,7 @@ namespace WoffuBL
             {
                 valuesOfList.Add(linia.JobTitleId.ToString() + "," + linia.Name + "," + linia.CompanyId.ToString());
             }
-            File.WriteAllLines("WoffuValues.txt",valuesOfList);
+            File.WriteAllLines(path+"/bin/WoffuValues.txt",valuesOfList);
             return true;
         }
         public JobTitle GetJobTitle( int id)

@@ -10,7 +10,7 @@ namespace WoffuApi.Controllers
 {
     public class jobtitlesController : ApiController
     {
-        BussinessLayer BL = new BussinessLayer();
+        BussinessLayer BL = new BussinessLayer(System.Web.HttpContext.Current.Server.MapPath("~"));
             // GET api/values
             public IHttpActionResult Get()
             {
@@ -22,21 +22,20 @@ namespace WoffuApi.Controllers
             {
                 return Json(BL.GetJobTitle(id));
             }
-
-            // POST api/values
-            public IHttpActionResult Post( [FromBody]string value)
-            {
-                return Json(new BussinessLayer().PostJobTitle( value));
+        
+        // POST api/values
+        public IHttpActionResult Post([FromBody]string name)
+            {           
+                return Json(BL.PostJobTitle( name));
             }
 
-            // PUT api/values/5
-            public IHttpActionResult Put(int id, [FromBody]string value)
+        // PUT api/values/5
+        public IHttpActionResult Put(int id, [FromBody]string name)
             {
-                return Json(BL.PutJobTitle(id, value));
+                return Json(BL.PutJobTitle(id, name));
             }
-
-            // DELETE api/values/5
-            public IHttpActionResult Delete(int id)
+        // DELETE api/values/5
+        public IHttpActionResult Delete(int id)
             {
                 return Json(BL.DeleteJobTitle(id));
             }

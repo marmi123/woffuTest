@@ -21,9 +21,6 @@ namespace WoffuApi.Tests
             JsonResult<List<JobTitle>> contentResult = result as JsonResult<List<JobTitle>>;
             // Declarar
             Assert.IsNotNull(result);
-
-            Assert.AreEqual(contentResult.Content.Count, 6);
-            //Assert.AreEqual("value2", result.ElementAt(1));
         }
 
         [TestMethod]

@@ -11,11 +11,13 @@ using WoffuBL;
 namespace WoffuApi.Controllers
 {
     [BasicAuthentication]
-    
+
+    [RoutePrefix("~/api/v1/jobtitles")]
+    [Route("~/api/v1/jobtitles")]
     public class jobtitlesController : ApiController
     {
+        
         BussinessLayer BL = new BussinessLayer(Path.Combine(AppDomain.CurrentDomain.BaseDirectory));
-            //System.Web.HttpContext.Current.Server.MapPath("~"));
         // GET api/values
 
         public IHttpActionResult Get()

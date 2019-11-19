@@ -1,9 +1,10 @@
-﻿function get(SeeResult=true) {
+﻿var urlapi ="/api/v1/jobtitles"
+function get(SeeResult = true) {
     $.ajax({
         type: "GET",
         contentType: "application/json",
         dataType: 'json',
-        url: "/api/jobtitles",
+        url: urlapi,
         success: function (data) {
             $('#tbJob').find("tr:gt(0)").remove();
             for (var i = 0; i < data.length; i++) {
@@ -21,7 +22,7 @@ function getId() {
         type: "GET",
         contentType: "application/json",
         dataType: 'json',
-        url: "/api/jobtitles?id=" + $('#Id').val(),
+        url: urlapi+"?id=" + $('#Id').val(),
         success: function (data) {
             $('#JsonResult').val(JSON.stringify(data));            
             $('#Id').val("");
@@ -37,7 +38,7 @@ function post() {
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         data: postData,
         dataType: 'json',
-        url: "/api/jobtitles",
+        url: urlapi,
         success: function (data) {
             $('#Value').val("");
             get();            
@@ -52,7 +53,7 @@ function put() {
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         data: putData,
         dataType: 'json',
-        url: "/api/jobtitles?id=" + $('#Id').val(),
+        url: urlapi+ "?id=" + $('#Id').val(),
         success: function (data) {
             $('#Id').val("");
             $('#Value').val("");
@@ -65,7 +66,7 @@ function remove() {
         type: "DELETE",
         contentType: "application/x-www-form-urlencoded; charset=utf-8",        
         dataType: 'json',
-        url: "/api/jobtitles?id=" + $('#Id').val(),
+        url: urlapi+"?id=" + $('#Id').val(),
         success: function () {
             $('#Id').val("");           
             get();

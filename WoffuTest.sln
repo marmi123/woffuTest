@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoffuApi", "WoffuApi\WoffuA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoffuApi.Tests", "WoffuApi.Tests\WoffuApi.Tests.csproj", "{00E9F78D-692F-4979-BCB4-2C7449FEE984}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testBacisAuthentication.cs", "testBacisAuthentication.cs\testBacisAuthentication.cs.csproj", "{F244CC4B-BE64-4F7D-9919-3CFA7850C571}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{00E9F78D-692F-4979-BCB4-2C7449FEE984}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00E9F78D-692F-4979-BCB4-2C7449FEE984}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00E9F78D-692F-4979-BCB4-2C7449FEE984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F244CC4B-BE64-4F7D-9919-3CFA7850C571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F244CC4B-BE64-4F7D-9919-3CFA7850C571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F244CC4B-BE64-4F7D-9919-3CFA7850C571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F244CC4B-BE64-4F7D-9919-3CFA7850C571}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
